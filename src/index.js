@@ -25,10 +25,26 @@ const postForm = () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      user: username,
-      pass: password,
+      username,
+      password,
     }),
   })
     .then((res) => res.json())
-    .then(console.log);
+    .then((res) => {
+      if (res && res.status === 'successful') {
+        // redirect
+        app.innerHTML = '<h1>Login Successful</h1>';
+        localStorage.removeItem('errorMsg');
+        localStorage.setItem('userId', res.id);
+        localStorage.setItem('userName', res.username);
+        window.location.href = '/main';
+      } else {
+        // app.innerHTML = `<h1>Login Failed :: ${res.status} </h1> ${mainForm}`;
+        localStorage.setItem('errorMsg', res.status);
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
+        window.location.href = '/error';
+      }
+    })
+    .catch(console.log);
 };

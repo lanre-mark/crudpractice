@@ -13,6 +13,18 @@ app.get('/', (req, res) => res.sendFile(path.resolve('../src', 'index.html')));
 app.get('/index.js', (req, res) =>
   res.sendFile(path.resolve('../src', 'index.js'))
 );
+app.get('/main.js', (req, res) =>
+  res.sendFile(path.resolve('../src', 'main.js'))
+);
+app.get('/error', (req, res) =>
+  res.sendFile(path.resolve('../src', 'error.html'))
+);
+app.get('/error.js', (req, res) =>
+  res.sendFile(path.resolve('../src', 'error.js'))
+);
+app.get('/main', (req, res) =>
+  res.sendFile(path.resolve('../src', 'main.html'))
+);
 
 app.use(express.json());
 
