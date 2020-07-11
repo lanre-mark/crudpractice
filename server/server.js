@@ -29,6 +29,7 @@ app.get('/main', (req, res) =>
 app.use(express.json());
 
 app.use('/api/user', require('./routes/user'));
+app.use('/api/todo', require('./routes/todo'));
 
 app.post('/api/post', (req, res) => {
   console.log('post request received', req.body);
