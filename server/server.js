@@ -9,6 +9,8 @@ let PORT = 5001;
 
 connectDB();
 
+app.use(require('cookie-parser')());
+
 app.get('/', (req, res) => res.sendFile(path.resolve('../src', 'index.html')));
 app.get('/index.js', (req, res) =>
   res.sendFile(path.resolve('../src', 'index.js'))
